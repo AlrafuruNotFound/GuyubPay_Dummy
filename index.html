@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GUYUB-PAY - Aplikasi iuran online rutin RT/RW yang mudah dan transparan">
+    <title>GUYUB-PAY - Iuran RT/RW Mudah & Transparan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="bottom-nav" id="bottomNav">
+        <button class="nav-item active" data-screen="home">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Beranda</span>
+        </button>
+        <button class="nav-item" data-screen="tagihan">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Tagihan</span>
+        </button>
+        <button class="nav-item" data-screen="riwayat">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Riwayat</span>
+        </button>
+        <button class="nav-item" data-screen="profil">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Profil</span>
+        </button>
+    </nav>
+
+    <!-- App Container -->
+    <div class="app-container">
+
+        <!-- Home Screen -->
+        <div class="screen active" id="home">
+            <header class="app-header">
+                <div class="header-content">
+                    <div>
+                        <h1 class="app-title">GUYUB-PAY</h1>
+                        <p class="app-subtitle">Iuran RT/RW mudah & transparan</p>
+                    </div>
+                    <div class="profile-avatar">
+                        <div class="avatar-circle">AB</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="screen-content">
+                <!-- Summary Card -->
+                <div class="card card-summary">
+                    <h3 class="card-title">Status Pembayaran Anda</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Tagihan aktif</div>
+                        </div>
+                        <div class="stat-item stat-danger">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Belum dibayar</div>
+                        </div>
+                        <div class="stat-item stat-success">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Sudah bayar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pos Iuran List -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Pos Iuran Aktif</h2>
+                        <input type="text" class="search-input" placeholder="🔍 Cari pos iuran...">
+                    </div>
+
+                    <div class="pos-list">
+                        <div class="pos-card">
+                            <div class="pos-header">
+                                <div>
+                                    <h3 class="pos-title">Iuran Sampah Bulanan</h3>
+                                    <p class="pos-meta">Bulan • Rp 10.000</p>
+                                </div>
+                                <span class="badge badge-primary">Aktif</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 68%"></div>
+                            </div>
+                            <div class="progress-text">68% terkumpul</div>
+                            <div class="pos-actions">
+                                <button class="btn btn-primary" onclick="showPayment('p-001')">Bayar</button>
+                                <button class="btn btn-outline" onclick="showPosDetail('p-001')">Detail</button>
+                            </div>
+                        </div>
+
+                        <div class="pos-card">
+                            <div class="pos-header">
+                                <div>
+                                    <h3 class="pos-title">Iuran Keamanan RT</h3>
+                                    <p class="pos-meta">Bulan • Rp 15.000</p>
+                                </div>
+                                <span class="badge badge-primary">Aktif</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                            <div class="progress-text">40% terkumpul</div>
+                            <div class="pos-actions">
+                                <button class="btn btn-primary" onclick="showPayment('p-002')">Bayar</button>
+                                <button class="btn btn-outline" onclick="showPosDetail('p-002')">Detail</button>
+                            </div>
+                        </div>
+
+                        <div class="pos-card">
+                            <div class="pos-header">
+                                <div>
+                                    <h3 class="pos-title">Iuran Kebersihan Lingkungan</h3>
+                                    <p class="pos-meta">Bulan • Rp 12.000</p>
+                                </div>
+                                <span class="badge badge-success">Lunas</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <div class="progress-text">90% terkumpul</div>
+                            <div class="pos-actions">
+                                <button class="btn btn-outline" onclick="showPosDetail('p-003')">Detail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="section">
+                    <h2 class="section-title">Notifikasi</h2>
+                    <div class="notification-list">
+                        <div class="notification-item">
+                            <div class="notification-icon">🔔</div>
+                            <div class="notification-content">
+                                <p class="notification-text">Pengingat: Iuran Sampah jatuh tempo 3 hari lagi</p>
+                                <span class="notification-time">2 jam yang lalu</span>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">✅</div>
+                            <div class="notification-content">
+                                <p class="notification-text">Pembayaran Iuran Kebersihan berhasil</p>
+                                <span class="notification-time">1 hari yang lalu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Screen -->
+        <div class="screen" id="payment">
+            <div class="screen-header">
+                <button class="btn-back" onclick="navigateTo('home')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <h2>Pembayaran</h2>
+            </div>
+
+            <div class="screen-content">
+                <div class="card">
+                    <h3 class="card-title">Ringkasan Pembayaran</h3>
+                    <div class="summary-row">
+                        <span class="summary-label">Pos</span>
+                        <span class="summary-value" id="paymentPosName">Iuran Sampah Bulanan</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Nominal</span>
+                        <span class="summary-value highlight" id="paymentAmount">Rp 10.000</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Nama Pembayar</span>
+                        <span class="summary-value">Ahmad Budiman</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Pilih Metode Pembayaran</h3>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="method" value="wallet" checked>
+                            <div class="method-card">
+                                <div class="method-icon">👛</div>
+                                <div class="method-info">
+                                    <div class="method-name">Dompet Digital</div>
+                                    <div class="method-desc">Wallet / MetaMask</div>
+                                </div>
+                                <div class="radio-custom"></div>
+                            </div>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="method" value="gateway">
+                            <div class="method-card">
+                                <div class="method-icon">💳</div>
+                                <div class="method-info">
+                                    <div class="method-name">Transfer Bank</div>
+                                    <div class="method-desc">Kartu / Gateway</div>
+                                </div>
+                                <div class="radio-custom"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Informasi Pembayaran</h3>
+                    <form class="payment-form">
+                        <div class="form-group">
+                            <label for="payerName">Nama</label>
+                            <input type="text" id="payerName" value="Ahmad Budiman" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payerPhone">No. HP</label>
+                            <input type="tel" id="payerPhone" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Jumlah (IDR)</label>
+                            <input type="number" id="amount" value="10000" readonly>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="note-box">
+                    <span class="note-icon">💡</span>
+                    <p>Biaya transaksi mungkin berlaku sesuai metode pembayaran.</p>
+                </div>
+
+                <button class="btn btn-primary btn-large" onclick="processPayment()">
+                    Bayar Sekarang
+                </button>
+            </div>
+        </div>
+
+        <!-- Riwayat Screen -->
+        <div class="screen" id="riwayat">
+            <header class="app-header">
+                <h1 class="app-title">Riwayat Pembayaran</h1>
+            </header>
+
+            <div class="screen-content">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Pos</th>
+                                    <th>Jumlah</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>08 Des 2025</td>
+                                    <td>Iuran Kebersihan</td>
+                                    <td class="amount">Rp 12.000</td>
+                                    <td><span class="badge badge-success">Berhasil</span></td>
+                                    <td>
+                                        <button class="btn-icon" onclick="showReceipt('tx-001')">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>05 Des 2025</td>
+                                    <td>Iuran Sampah</td>
+                                    <td class="amount">Rp 10.000</td>
+                                    <td><span class="badge badge-success">Berhasil</span></td>
+                                    <td>
+                                        <button class="btn-icon" onclick="showReceipt('tx-002')">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>01 Des 2025</td>
+                                    <td>Iuran Keamanan RT</td>
+                                    <td class="amount">Rp 15.000</td>
+                                    <td><span class="badge badge-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-icon" onclick="showReceipt('tx-003')">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profil Screen -->
+        <div class="screen" id="profil">
+            <header class="app-header">
+                <h1 class="app-title">Profil Saya</h1>
+            </header>
+
+            <div class="screen-content">
+                <div class="card profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar-large">AB</div>
+                        <h2 class="profile-name">Ahmad Budiman</h2>
+                        <span class="profile-role">Warga RT 05 / RW 02</span>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-row">
+                            <span class="info-label">NIK</span>
+                            <span class="info-value">3201234567890123</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">No. HP</span>
+                            <span class="info-value">08123456789</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Alamat</span>
+                            <span class="info-value">Jl. Contoh No. 123, Jakarta</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">ahmad.budiman@email.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline btn-large">
+                    Edit Profil
+                </button>
+                <br><br>
+                <button class="btn btn-danger btn-large">
+                    Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Tagihan Screen -->
+        <div class="screen" id="tagihan">
+            <header class="app-header">
+                <h1 class="app-title">Tagihan</h1>
+            </header>
+
+            <div class="screen-content">
+                <div class="filter-tabs">
+                    <button class="filter-tab active">Semua</button>
+                    <button class="filter-tab">Belum Bayar</button>
+                    <button class="filter-tab">Lunas</button>
+                </div>
+
+                <div class="bills-list">
+                    <div class="bill-card pending">
+                        <div class="bill-header">
+                            <h3 class="bill-title">Iuran Sampah Bulanan</h3>
+                            <span class="bill-amount">Rp 10.000</span>
+                        </div>
+                        <div class="bill-meta">
+                            <span>Jatuh tempo: 12 Des 2025</span>
+                            <span class="badge badge-danger">Belum Bayar</span>
+                        </div>
+                        <button class="btn btn-primary btn-small" onclick="showPayment('p-001')">Bayar Sekarang</button>
+                    </div>
+
+                    <div class="bill-card pending">
+                        <div class="bill-header">
+                            <h3 class="bill-title">Iuran Keamanan RT</h3>
+                            <span class="bill-amount">Rp 15.000</span>
+                        </div>
+                        <div class="bill-meta">
+                            <span>Jatuh tempo: 15 Des 2025</span>
+                            <span class="badge badge-danger">Belum Bayar</span>
+                        </div>
+                        <button class="btn btn-primary btn-small" onclick="showPayment('p-002')">Bayar Sekarang</button>
+                    </div>
+
+                    <div class="bill-card paid">
+                        <div class="bill-header">
+                            <h3 class="bill-title">Iuran Kebersihan</h3>
+                            <span class="bill-amount">Rp 12.000</span>
+                        </div>
+                        <div class="bill-meta">
+                            <span>Dibayar: 08 Des 2025</span>
+                            <span class="badge badge-success">Lunas</span>
+                        </div>
+                        <button class="btn btn-outline btn-small" onclick="showReceipt('tx-001')">Lihat Bukti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal" id="receiptModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Bukti Pembayaran</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="receipt">
+                    <div class="receipt-header">
+                        <div class="receipt-icon">✅</div>
+                        <h2>Pembayaran Berhasil</h2>
+                    </div>
+                    <div class="receipt-details">
+                        <div class="receipt-row">
+                            <span class="receipt-label">No. Transaksi</span>
+                            <span class="receipt-value" id="receiptTxHash">TX-001-2025</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="receipt-label">Tanggal</span>
+                            <span class="receipt-value">08 Des 2025, 14:30 WIB</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="receipt-label">Pos Iuran</span>
+                            <span class="receipt-value">Iuran Kebersihan Lingkungan</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="receipt-label">Jumlah</span>
+                            <span class="receipt-value highlight-amount">Rp 12.000</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="receipt-label">Pembayar</span>
+                            <span class="receipt-value">Ahmad Budiman</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="receipt-label">Metode</span>
+                            <span class="receipt-value">Dompet Digital</span>
+                        </div>
+                        <div class="receipt-row">
+                            <span class="receipt-label">Status</span>
+                            <span class="badge badge-success">Berhasil</span>
+                        </div>
+                    </div>
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <rect x="0" y="0" width="15" height="15" />
+                                <rect x="20" y="0" width="15" height="15" />
+                                <rect x="40" y="0" width="15" height="15" />
+                                <rect x="0" y="20" width="15" height="15" />
+                                <rect x="40" y="20" width="15" height="15" />
+                                <rect x="0" y="40" width="15" height="15" />
+                                <rect x="20" y="40" width="15" height="15" />
+                                <rect x="40" y="40" width="15" height="15" />
+                            </svg>
+                        </div>
+                        <p class="qr-label">Scan QR untuk verifikasi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="downloadReceipt()">Download PDF</button>
+                <button class="btn btn-primary" onclick="shareReceipt()">Bagikan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-overlay" onclick="closeSuccessModal()"></div>
+        <div class="modal-content success-modal">
+            <div class="success-animation">
+                <div class="checkmark">✓</div>
+            </div>
+            <h2>Pembayaran Berhasil!</h2>
+            <p>Transaksi Anda telah diproses</p>
+            <div class="tx-hash">TX: <span id="txHashDisplay"></span></div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="viewReceipt()">Lihat Bukti</button>
+                <button class="btn btn-outline" onclick="backToHome()">Kembali ke Beranda</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
